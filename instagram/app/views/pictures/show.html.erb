@@ -1,2 +1,10 @@
 <p class="pic_title"><%= @picture.caption %></p>
 <%= image_tag(@picture.image.url(:medium)) %>
+
+
+
+<%= form_for @comment do |f| %>
+  First name: <%= f.context :context %>
+  <%= f.submit %>
+<% end %>
+<!-- <input type='text' value=<%=@comment.context%>> -->

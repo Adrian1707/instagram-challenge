@@ -12,13 +12,14 @@ class PicturesController < ApplicationController
 
   def show
     @picture = Picture.find(params[:id])
+    @comment = @picture.comments.new
+
   end
 
   def create
-    @picture = Picture.new(picture_params)
-    @picture.user_id = current_user.id
+    @picture = Picture.new(picture_params.merge({user: current_user}))
     if @picture.save
-    redirect_to pictures_path
+      redirect_to pictures_path
     end
   end
 
